@@ -1,16 +1,30 @@
 import './App.css';
-import StateComponent from './components/StateComponent';
 import Header from './components/Header';
-import Effect from './components/Effect';
+import {Routes, Route} from 'react-router-dom'
+import HomeScreen from './screens/HomeScreen';
+import ReferenceScreen from './screens/ReferenceScreen';
+import DetailScreen from './screens/DetailScreen';
 
 function App() {
   return (
     <div className="App col-container">
       <Header />
-      <StateComponent />
-      <Effect />
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/reference" element={<ReferenceScreen />} />
+        <Route path="/details/:id" element={<DetailScreen />} />
+      </Routes>
+
     </div>
   );
 }
 
 export default App;
+
+
+//* Routes is a version 6 for React-Router-dom
+
+// ? Order to set up Router-Dom
+// Browers Router in inex.js
+// Set up Nav bar
+// Set up routes
