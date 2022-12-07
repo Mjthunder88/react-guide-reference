@@ -14,7 +14,6 @@ function App() {
         <Route path="/reference" element={<ReferenceScreen />} />
         <Route path="/details/:id" element={<DetailScreen />} />
       </Routes>
-
     </div>
   );
 }
