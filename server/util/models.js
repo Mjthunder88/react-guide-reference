@@ -10,8 +10,14 @@ module.exports = {
             allowNull: false,
             primaryKey: true
         },
-        name: DataTypes.STRING,
-        password:DataTypes.STRING
+        name: {
+            type: DataTypes.STRING({length: 20}),
+            allowNull: false
+        },
+        password:{
+            type: DataTypes.STRING,
+            allowNull: false
+        }
     }),
     Product: db.define("product", {
         id: {

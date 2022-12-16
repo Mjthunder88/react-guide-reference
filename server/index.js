@@ -21,7 +21,29 @@ Cart.belongsTo(Product)
 
 //! endpoints
 
+server.post('/api/addUser', async (req, res) => {
+    const {username, password} = req.body
+    try {
+        await User.create({
+             name: username,
+             password
+        })
+        res.status(200).send('User created')
+    } catch (error) {
+        console.log(error)
+        res.status(401).send('Could not create user')
+    }
+})
 
+server.get('/api/user/:id', async (req, res) => {
+   try {
+       const {id} = req.params
+        let info = await User.findOne({where: {id: id}})
+        res.status(200).send(info)
+   } catch {
+    res.status(401).send('Couldnt complete request')
+   }
+})
 
 
 
