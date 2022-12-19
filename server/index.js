@@ -3,6 +3,8 @@ const express = require('express')
 const cors = require('cors')
 const server = express()
 
+const seed = require('./util/seed')
+
 const db = require('./util/database')
 const {User, Product, Cart} = require('./util/models')
 
@@ -50,8 +52,12 @@ server.get('/api/user/:id', async (req, res) => {
 
 //! Listen/ creating a server
 // {force: true} resets your tables 
-db.sync()
+db
+.sync()
+// .sync({force: true})
 .then(() => {
-    server.listen(4000, () => console.log('server runs on 4000'))
+    // seed()
 })
 .catch((err) => console.log(err))
+
+server.listen(4000, () => console.log('server runs on 4000'))
