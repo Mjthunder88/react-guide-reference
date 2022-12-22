@@ -55,13 +55,14 @@ server.get('/cart/:userId', async (req, res) => {
             where: {userId},
             include: [{
                 model: User,
-                attributes: ["username"],
+                attributes: ["name"],
                 required: true
             }, Product]
         })
         res.status(200).send(cart)
     } catch (error) {
         res.status(400).send("we had an error...")
+        console.log(error)
     }
 })
 
